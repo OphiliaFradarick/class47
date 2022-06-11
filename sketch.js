@@ -44,7 +44,6 @@ function draw(){
     }
 
     multipleZombies();
-    multipleZombies2();
     //fire multiple bullets on clicking space bar using for loop
     //for(var i=0;i<bullets.length;i++){
       //
@@ -55,30 +54,24 @@ function draw(){
 
 //function for multiple zombies
 function multipleZombies(){
-   if(frameCount%120===0){
+   if(frameCount%100===0){
     var zombie=createSprite(windowWidth,windowHeight-190,10,10)
-    zombie.addAnimation("Image_zombie",zombieimage)
     zombie.scale=3;
     zombie.debug = true;
     zombie.setCollider("rectangle",-13,0,30,100)
     zombie.velocityX=-6
     zombie.lifetime=windowWidth/6
     zombie.depth=zombie.depth+1
+
+    //switch statement to create multiple zombies animation
+    rand = Math.round(random(1,2))
+    switch(rand)
+    {
+      case 1: zombie.addAnimation("zombie1",zombieimage);
+      break;
+      case 2: zombie.addAnimation("zombie2",zombieimage2);
+      break;
+      default: break;
+    }
    }
-}
-
-
-function multipleZombies2(){
-  if(frameCount%240===0){
-    var zombie2=createSprite(windowWidth,windowHeight-190,10,10)
-    zombie2.addAnimation("Image_zombie2",zombieimage2)
-    zombie2.scale=3;
-    zombie2.debug = true;
-    zombie2.setCollider("rectangle",-13,0,30,100)
-    zombie2.velocityX=-3
-    zombie2.lifetime=windowWidth/6
-    zombie2.depth=zombie2.depth+1
-   }
-
-
 }
